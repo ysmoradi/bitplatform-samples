@@ -14,7 +14,7 @@
             @if (string.IsNullOrEmpty(error) is false)
             {
                 <BitMessageBar Class="form-message-bar"
-                               MessageBarType="@emailConfirmationMessageType"
+                               MessageBarType="@emailConfirmationMessageColor"
                                OnDismiss="() => error = null">
                     @(error)
                 </BitMessageBar>

@@ -10,7 +10,7 @@
         @if (string.IsNullOrEmpty(signInMessage) is false)
         {
             <BitMessageBar Class="form-message-bar"
-                           MessageBarType="@signInMessageType"
+                           MessageBarType="@signInMessageColor"
                            OnDismiss="() => signInMessage = null">
                 @signInMessage
             </BitMessageBar>

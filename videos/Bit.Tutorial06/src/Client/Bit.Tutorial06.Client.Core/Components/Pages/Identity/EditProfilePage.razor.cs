@@ -16,7 +16,7 @@ public partial class EditProfilePage
     private string? editProfileMessage;
     private string? profileImageUploadUrl;
     private string? profileImageRemoveUrl;
-    private BitSeverity editProfileMessageType;
+    private BitColor editProfileMessageColor;
     private UserDto user = new();
     private readonly EditUserDto userToEdit = new();
     private bool isDeleteAccountConfirmModalOpen;
@@ -74,12 +74,12 @@ public partial class EditProfilePage
 
             PubSubService.Publish(PubSubMessages.PROFILE_UPDATED, user);
 
-            editProfileMessageType = BitSeverity.Success;
+            editProfileMessageColor = BitColor.Success;
             editProfileMessage = Localizer[nameof(AppStrings.ProfileUpdatedSuccessfullyMessage)];
         }
         catch (KnownException e)
         {
-            editProfileMessageType = BitSeverity.Error;
+            editProfileMessageColor =  BitColor.Error;
 
             editProfileMessage = e.Message;
         }
@@ -104,7 +104,7 @@ public partial class EditProfilePage
         catch (KnownException e)
         {
             editProfileMessage = e.Message;
-            editProfileMessageType = BitSeverity.Error;
+            editProfileMessageColor =  BitColor.Error;
         }
         finally
         {

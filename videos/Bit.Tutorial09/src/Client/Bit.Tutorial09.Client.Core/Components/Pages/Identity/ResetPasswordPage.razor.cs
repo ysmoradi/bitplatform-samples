@@ -10,7 +10,7 @@ public partial class ResetPasswordPage
     private bool isLoading;
     private bool passwordChanged;
     private string? resetPasswordMessage;
-    private BitSeverity resetPasswordMessageType;
+    private BitColor resetPasswordMessageColor;
     private ResetPasswordRequestDto resetPasswordModel = new();
 
     [Parameter, SupplyParameterFromQuery] public string? Email { get; set; }
@@ -41,7 +41,7 @@ public partial class ResetPasswordPage
         {
             await identityController.ResetPassword(resetPasswordModel, CurrentCancellationToken);
 
-            resetPasswordMessageType = BitSeverity.Success;
+            resetPasswordMessageColor =  BitColor.Success;
 
             resetPasswordMessage = Localizer[nameof(AppStrings.PasswordChangedSuccessfullyMessage)];
 
@@ -49,7 +49,7 @@ public partial class ResetPasswordPage
         }
         catch (KnownException e)
         {
-            resetPasswordMessageType = BitSeverity.Error;
+            resetPasswordMessageColor =  BitColor.Error;
 
             resetPasswordMessage = e.Message;
         }

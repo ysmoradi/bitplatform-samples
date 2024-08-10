@@ -8,7 +8,7 @@
         @if (string.IsNullOrEmpty(editProfileMessage) is false)
         {
             <BitMessageBar Class="form-message-bar"
-                           MessageBarType="@editProfileMessageType"
+                           MessageBarType="@editProfileMessageColor"
                            OnDismiss="() => editProfileMessage = null">
                 @editProfileMessage
             </BitMessageBar>

@@ -14,7 +14,7 @@ public partial class AddOrEditCategoryPage
     private bool isSaving;
     private string? saveMessage;
     private bool isColorPickerOpen;
-    private BitSeverity saveMessageType;
+    private BitColor saveMessageType;
     private CategoryDto category = new();
 
     protected override async Task OnInitAsync()
@@ -69,14 +69,14 @@ public partial class AddOrEditCategoryPage
         }
         catch (ResourceValidationException e)
         {
-            saveMessageType = BitSeverity.Error;
+            saveMessageType =  BitColor.Error;
 
             saveMessage = string.Join(Environment.NewLine, e.Payload.Details.SelectMany(d => d.Errors).Select(e => e.Message));
         }
         catch (KnownException e)
         {
             saveMessage = e.Message;
-            saveMessageType = BitSeverity.Error;
+            saveMessageType =  BitColor.Error;
         }
         finally
         {
