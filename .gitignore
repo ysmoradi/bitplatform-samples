@@ -232,3 +232,4 @@ _book
 /BitTools/BitCLIV1Task/buildtask/ps_modules/VstsTaskSdk/
 *Resource.designer.cs
 *.tsbuildinfo
+/videos/Bit.Tutorial09/src/Bit.Tutorial09.Server/Bit.Tutorial09Db.db

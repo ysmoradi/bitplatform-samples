@@ -9,7 +9,7 @@ public partial class EmailConfirmationPage
     private bool isLoading = true;
     private string? error;
     private bool emailConfirmed = false;
-    private BitSeverity emailConfirmationMessageType = BitSeverity.Error;
+    private BitColor emailConfirmationMessageColor =  BitColor.Error;
 
     [SupplyParameterFromQuery, Parameter] public string? Email { get; set; }
     [SupplyParameterFromQuery, Parameter] public string? Token { get; set; }
@@ -50,13 +50,13 @@ public partial class EmailConfirmationPage
         {
             await identityController.SendConfirmationEmail(new() { Email = Email }, CurrentCancellationToken);
 
-            emailConfirmationMessageType = BitSeverity.Success;
+            emailConfirmationMessageColor =  BitColor.Success;
 
             error = Localizer[nameof(AppStrings.ResendConfirmationLinkMessage)];
         }
         catch (KnownException e)
         {
-            emailConfirmationMessageType = BitSeverity.Error;
+            emailConfirmationMessageColor =  BitColor.Error;
 
             error = e.Message;
         }

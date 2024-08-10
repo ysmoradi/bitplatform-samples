@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Pulumi.AzureNative" Version="2.44.1" />
+        <PackageReference Include="Pulumi.AzureNative" Version="2.55.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Bit.Tutorial06.Shared\Bit.Tutorial06.Shared.csproj" />
+        <ProjectReference Include="..\Bit.Tutorial06.Shared\Bit.Tutorial06.Shared.csproj" />
     </ItemGroup>
 
 </Project>

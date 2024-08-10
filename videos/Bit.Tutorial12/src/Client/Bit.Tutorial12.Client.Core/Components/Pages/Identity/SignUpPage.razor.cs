@@ -10,7 +10,7 @@ public partial class SignUpPage
     private bool isLoading;
     private bool isSignedUp;
     private string? signUpMessage;
-    private BitSeverity signUpMessageType;
+    private BitColor signUpMessageColor;
     private SignUpRequestDto signUpModel = new();
 
     private async Task DoSignUp()
@@ -28,13 +28,13 @@ public partial class SignUpPage
         }
         catch (ResourceValidationException e)
         {
-            signUpMessageType = BitSeverity.Error;
+            signUpMessageColor =  BitColor.Error;
             signUpMessage = string.Join(Environment.NewLine, e.Payload.Details.SelectMany(d => d.Errors).Select(e => e.Message));
         }
         catch (KnownException e)
         {
             signUpMessage = e.Message;
-            signUpMessageType = BitSeverity.Error;
+            signUpMessageColor =  BitColor.Error;
         }
         finally
         {
@@ -53,13 +53,13 @@ public partial class SignUpPage
         {
             await identityController.SendConfirmationEmail(new() { Email = signUpModel.Email }, CurrentCancellationToken);
 
-            signUpMessageType = BitSeverity.Success;
+            signUpMessageColor =  BitColor.Success;
             signUpMessage = Localizer[nameof(AppStrings.ResendConfirmationLinkMessage)];
         }
         catch (KnownException e)
         {
             signUpMessage = e.Message;
-            signUpMessageType = BitSeverity.Error;
+            signUpMessageColor =  BitColor.Error;
         }
         finally
         {
