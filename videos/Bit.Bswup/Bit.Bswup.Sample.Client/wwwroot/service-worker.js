@@ -1,4 +1,4 @@
-self.assetsInclude = [];
+﻿self.assetsInclude = [];
 
 self.externalAssets = [
     {
@@ -8,7 +8,10 @@ self.externalAssets = [
         url: "_framework/blazor.web.js"
     },
     {
-        "url": "Bit.Bswup.Sample.styles.css"
+        url: "Bit.Bswup.Sample.styles.css"
+    },
+    {
+        url: "Bit.Bswup.Sample.Client.bundle.scp.css"
     }
 ];
 
@@ -30,10 +33,9 @@ self.isPassive = true;
 self.errorTolerance = 'lax';
 self.caseInsensitiveUrl = true;
 
+self.noPrerenderQuery = 'no-prerender=true';
 
-// on apps with Prerendering enabled, to have the best experience for the end user un-comment the following two lines.
-// more info: https://bitplatform.dev/bswup/service-worker
- self.noPrerenderQuery = 'no-prerender=true';
- self.disablePassiveFirstBoot = true;
+// If you wish to disable pre-rendering in App.razor, comment out the following line as well.
+self.disablePassiveFirstBoot = true;
 
 self.importScripts('_content/Bit.Bswup/bit-bswup.sw.js');
